@@ -1,11 +1,11 @@
 {
     "name": "blackbird/module-eav-optimize",
     "version": "1.0.0",
-    "description": "N/A",
+    "description": "Improve EAV attribute option performance",
     "type": "magento2-module",
     "require": {
         "magento/framework": "*",
-        "magento/module-eav": "102.1.*"
+        "magento/module-eav": "*"
     },
     "license": [
         "Proprietary"
