@@ -7,7 +7,8 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 
 class Config
 {
-    const string DEV_CACHING_CACHE_OPTION_VALUES = 'dev/caching/cache_option_values';
+    public const DEV_CACHING_CACHE_OPTION_VALUES = 'dev/caching/cache_option_values';
+
     /**
      * @var ScopeConfigInterface
      */
