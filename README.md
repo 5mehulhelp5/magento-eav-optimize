@@ -7,6 +7,9 @@ The **EavOptimize** plugin provides a solution to optimize the performance of fe
 Additionally, this module forces the default value of `cache_user_defined_attributes` system configuration to `1`, ensuring that custom attributes are cached by default for better efficiency.
 You can still disable this config in adminhtml.
 
+See existing Magento issue: https://github.com/magento/magento2/issues/36174
+See in progress official PR: https://github.com/magento/magento2/pull/39476
+
 ## Features
 
 - **Memoization:** Stores attribute option values in memory for faster repeated access during the same request lifecycle.
