@@ -7,6 +7,7 @@ use Blackbird\EavOptimize\Model\Config;
 use Magento\Eav\Model\Config as EavConfig;
 use Magento\Eav\Model\Entity\Attribute\Source\Table;
 use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Store\Model\StoreManagerInterface;
 
 class GetSpecificOptions
 {
@@ -37,14 +38,21 @@ class GetSpecificOptions
      */
     protected Config $config;
 
+    /**
+     * @var StoreManagerInterface
+     */
+    protected StoreManagerInterface $storeManager;
+
     public function __construct(
         EavConfig $eavConfig,
         Config $config,
-        Json $json
+        Json $json,
+        StoreManagerInterface $storeManager
     ) {
         $this->eavConfig = $eavConfig;
         $this->config    = $config;
         $this->json      = $json;
+        $this->storeManager = $storeManager;
     }
 
     /**
@@ -144,6 +152,14 @@ class GetSpecificOptions
      */
     protected function getCacheKey(mixed $attributeId, $storeId, array $optionsIdsToLoad): string
     {
+        if ($storeId === null) {
+            try {
+                $storeId = $this->storeManager->getStore()->getId();
+            } catch (\Magento\Framework\Exception\NoSuchEntityException $e) {
+                $storeId = 0;
+            }
+        }
+
         return implode(
             '-',
             [
